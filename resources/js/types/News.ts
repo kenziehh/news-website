@@ -1,10 +1,9 @@
+import { Links } from "./PaginationLinks";
+import { NewsData } from "./NewsData";
+import { Meta } from "./Meta";
+
 export interface News {
-    author: string;
-    category: string;
-    created_at: string;
-    description: string;
-    id: number;
-    image: string;
-    title: string;
-    updated_at: string;
+    data: NewsData[];
+    links: Links;
+    meta: Meta;
 }

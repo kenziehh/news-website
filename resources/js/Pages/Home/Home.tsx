@@ -1,6 +1,8 @@
 import { News } from "@/types/News";
+import { NewsData } from "@/types/NewsData";
+import Paginator from "./Paginator";
 
-export default function Home({ news }: { news: News[] }) {
+export default function Home({ news }: { news: News }) {
     console.log(news);
     return (
         <main className="container">
@@ -23,10 +25,13 @@ export default function Home({ news }: { news: News[] }) {
                     className="max-w-96 max-h-96"
                 />
             </section>
-            <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12">
-                {news?.map((newsItem: News) => {
+            <section className="justify-center items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12">
+                {news?.data.map((newsItem: NewsData) => {
                     return (
-                        <div className="max-w-96 flex flex-col items-center gap-8 shadow-lg p-4">
+                        <div
+                            className="max-w-96 h-[550px] flex flex-col items-center gap-8 shadow-lg p-4"
+                            key={newsItem.id}
+                        >
                             <img
                                 src={newsItem.image}
                                 alt=""
@@ -40,6 +45,9 @@ export default function Home({ news }: { news: News[] }) {
                     );
                 })}
             </section>
+            <div className="mt-20">
+                <Paginator meta={news.meta} />
+            </div>
         </main>
     );
 }
