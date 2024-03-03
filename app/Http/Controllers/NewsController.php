@@ -14,7 +14,7 @@ class NewsController extends Controller
     public function index()
     {
         $news = News::all();
-        return Inertia::render("Home",[
+        return Inertia::render("Home/Home",[
             "news" => $news,
         ]);
     }
